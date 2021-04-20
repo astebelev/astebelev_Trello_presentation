@@ -1,41 +1,38 @@
 package com.astebelev.trello;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
-public class BoardCreationTests extends TestBase{
+public class BoardCreationTests extends TestBase {
     @BeforeMethod
     public void preconditions() throws InterruptedException {
         clickLoginButton();
-        fillLoginForm();
+        fillLoginForm("rochman.elena@gmail.com", "12345.com");
         confirmLogin();
     }
 
 
     @Test
-    public void testAtlassianLogin() {
+    public void testBoardCreation() {
         initBoardCreationFromBoardsList();
-        wd.findElement(By.xpath("//input[@data-test-id='create-board-title-input']")).click();
-        wd.findElement(By.xpath("//input[@data-test-id='create-board-title-input']")).clear();
-        wd.findElement(By.xpath("//input[@data-test-id='create-board-title-input']")).sendKeys("board1");
+        type(By.xpath("//input[@data-test-id='create-board-title-input']"), "board");
 
-        wd.findElement(By.xpath("//*[@aria-label='DownIcon']/../..")).click();
-        wd.findElement(By.xpath("//*[@aria-label='PublicIcon']/../..")).click();
+        selectBoardVisibility("PublicIcon");
 
-        wd.findElement(By.cssSelector("._21upOlzpUQJcdT.gkv95EhjCrfcEU")).click();
-        wd.findElement(By.cssSelector("[data-test-id='create-board-submit-button']")).click();
+        click(By.cssSelector("._21upOlzpUQJcdT.gkv95EhjCrfcEU"));
+        click(By.cssSelector("[data-test-id='create-board-submit-button']"));
 
 
+    }
+
+    public void selectBoardVisibility(String visibility) {
+        click(By.xpath("//*[@aria-label='DownIcon']/../.."));
+        click(By.xpath("//*[@aria-label='" + visibility + "']/../.."));
     }
 
     public void initBoardCreationFromBoardsList() {
-        wd.findElement(By.xpath("//*[@data-test-id='create-board-tile']")).click();
+        click(By.xpath("//*[@data-test-id='create-board-tile']"));
     }
 
 }
-
