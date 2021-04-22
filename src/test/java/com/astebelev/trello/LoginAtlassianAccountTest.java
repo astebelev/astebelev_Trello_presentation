@@ -14,7 +14,8 @@ public class LoginAtlassianAccountTest extends TestBase{
     @Test
     public void testloginAtlassian() throws InterruptedException {
         clickLoginButton();
-        fillLoginForm("rochman.elena@gmail.com", "12345.com");
+
+        fillLoginForm(new User().withEmail("rochman.elena@gmail.com").withPassword("12345.com"));
         confirmLogin();
 
         Assert.assertTrue(
@@ -27,7 +28,7 @@ public class LoginAtlassianAccountTest extends TestBase{
     @Test
     public void negativeTestLogin() throws InterruptedException {
         clickLoginButton();
-        fillLoginForm("rochman.elena@gmail.com", "12345.cOm");
+        fillLoginForm(new User().withEmail("rochman.elena@gmail.com").withPassword("12345.cOm"));
         confirmLogin();
 
     }

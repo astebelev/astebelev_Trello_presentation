@@ -3,7 +3,6 @@ package com.astebelev.trello;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -33,17 +32,20 @@ public class TestBase {
 
 
 
-    public void fillLoginForm(String email, String password) throws InterruptedException {
-        type(By.cssSelector("#user"), email);
+    public void fillLoginForm(User user) throws InterruptedException {
+        type(By.cssSelector("#user"), user.getEmail());
         Thread.sleep(2000);
         click(By.cssSelector("#login"));
-        type(By.cssSelector("#password"), password);
+        type(By.cssSelector("#password"), user.getPassword());
     }
 
     public void type(By locator, String text) {
-        click(locator);
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
+        if (text != null){
+            click(locator);
+            wd.findElement(locator).clear();
+            wd.findElement(locator).sendKeys(text);
+        }
+
     }
 
     public void click(By locator) {
