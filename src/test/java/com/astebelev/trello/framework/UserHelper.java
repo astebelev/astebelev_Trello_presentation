@@ -48,4 +48,10 @@ public class UserHelper extends HelperBase {
     public boolean isAvatarPresent() {
         return isElementPresent(By.cssSelector("[data-test-id=header-member-menu-button]"));
     }
+
+    public void logout() {
+        //click on avatar
+        //click logout
+        //confirm logout
+    }
 }
