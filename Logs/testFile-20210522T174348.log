@@ -1,0 +1,14 @@
+17:43:57  INFO  com.astebelev.trello.tests.TestBase - Start method testloginAtlassian
+17:43:57  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: [data-test-id=header-member-menu-button]
+17:44:12  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: [href='/login']
+17:44:12  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: #user
+17:44:14  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: #user
+17:44:14  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: #user
+17:44:16  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: #login
+17:44:19  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: #password
+17:44:19  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: #password
+17:44:19  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: #password
+17:44:20  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: #login-submit
+17:44:23  INFO  c.a.trello.framework.MyListener - Start search element By.cssSelector: [data-test-id=header-member-menu-button]
+17:44:38  INFO  com.astebelev.trello.tests.TestBase - Stop method testloginAtlassian
+			+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
