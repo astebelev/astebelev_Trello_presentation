@@ -4,10 +4,9 @@ public class Board {
     private String boardName;
     private String visibility;
 
-    public Board(String boardName, String visibility) {
-        this.boardName = boardName;
-        this.visibility = visibility;
-    }
+
+
+
 
     public String getBoardName() {
         return boardName;
@@ -15,5 +14,23 @@ public class Board {
 
     public String getVisibility() {
         return visibility;
+    }
+
+    public Board setBoardName(String boardName) {
+        this.boardName = boardName;
+        return this;
+    }
+
+    public Board setVisibility(String visibility) {
+        this.visibility = visibility;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "boardName='" + boardName + '\'' +
+                ", visibility='" + visibility + '\'' +
+                '}';
     }
 }

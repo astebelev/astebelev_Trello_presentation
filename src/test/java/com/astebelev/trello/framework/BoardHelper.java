@@ -41,7 +41,7 @@ public class BoardHelper extends HelperBase{
 
     public void createBoard() {
         initBoardCreationFromBoardsList();
-        fillBoardCreationForm(new Board("board" + TimeUnit.SECONDS, "PublicIcon"));
+        fillBoardCreationForm(new Board().setBoardName("board" + TimeUnit.SECONDS).setVisibility("PublicIcon"));
 
         submitBoardCreationForm();
     }

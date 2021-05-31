@@ -1,8 +1,9 @@
 package com.astebelev.trello.tests;
 
 import com.astebelev.trello.framework.ApplicationManager;
-import com.google.common.io.Files;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.slf4j.Logger;
@@ -12,9 +13,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 
 public class TestBase {
@@ -34,8 +34,9 @@ public class TestBase {
 
     //    ______________________________________________________
     @BeforeMethod
-    public void startLogger(Method m){
-        logger.info("Start method " + m.getName());
+    public void startLogger(Method m, Object[]p)
+    {
+        logger.info("Start method " + m.getName()+ " with param: "+ Arrays.asList(p));
     }
 
     @AfterMethod(alwaysRun = true)

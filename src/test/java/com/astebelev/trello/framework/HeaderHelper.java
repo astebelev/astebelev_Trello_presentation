@@ -10,4 +10,8 @@ public class HeaderHelper extends HelperBase{
     public void goHome() {
         click(By.cssSelector("[data-test-id='header-home-button']"));
     }
+
+    public boolean buttonPlusPresent() {
+        return isElementPresent(By.cssSelector("[data-test-id='header-create-menu-button']"));
+    }
 }

@@ -4,11 +4,35 @@ import com.astebelev.trello.model.Board;
 import com.astebelev.trello.model.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 
 public class BoardCreationTests extends TestBase {
+    @DataProvider
+    public Iterator<Object[]> boards() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/boards.csv")));
+        String line = reader.readLine();
+        while (line !=null){
+            String[] split = line.split(";");
+            list.add(new Object[]{new Board()
+                    .setBoardName(split[0])
+                    .setVisibility(split[1])});
+            line = reader.readLine();
+        }
+
+
+        return list.iterator();
+    }
+
+
+
     @BeforeMethod
     public void preconditions() throws InterruptedException {
         if(!app.getUser().isAvatarPresent()){
@@ -17,15 +41,28 @@ public class BoardCreationTests extends TestBase {
                     .withEmail("rochman.elena@gmail.com").withPassword("12345.com"));
             app.getUser().confirmLogin();
         }
+        if(!app.getHeader().buttonPlusPresent()){
+            app.getHeader().goHome();
+        }
 
     }
 
     @Test
     public void testBoardCreation() {
         app.getBoard().initBoardCreationFromBoardsList();
-        app.getBoard().fillBoardCreationForm(new Board("board" + System.currentTimeMillis(), "PublicIcon"));
+        app.getBoard().fillBoardCreationForm(new Board().setBoardName("111" + System.currentTimeMillis()).setVisibility("PublicIcon"));
 
         app.getBoard().submitBoardCreationForm();
     }
+
+    @Test(dataProvider = "boards")
+    public void testBoardCreationDataProvider(Board board) {
+        app.getBoard().initBoardCreationFromBoardsList();
+        app.getBoard().fillBoardCreationForm(board);
+
+        app.getBoard().submitBoardCreationForm();
+    }
+
+
 
 }
