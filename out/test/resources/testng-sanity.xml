@@ -13,6 +13,7 @@
         </class>
 
         <class name="com.astebelev.trello.tests.BoardCreationTests"/>
+        <class name="com.astebelev.trello.tests.BoardDeletionTests"/>
     </classes>
 </test>
 </suite>
